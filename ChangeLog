@@ -1,0 +1,5 @@
+2015-10-11    <Skrylar@SKRYLAR-PC>
+
+	* red.el (red-mode): Change from fundamental-mode to prog-mode.
+	(red-syntax-table): Change from "synTable" to "syn-table."
+	Add GPLv3 licensing (same as all emacs plugins.)

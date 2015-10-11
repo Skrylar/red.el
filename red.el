@@ -1,3 +1,29 @@
+;;; red.el --- Support for the Red programming language.
+
+;; Copyright (C) 2015 Joshua Cearley
+
+;; This file is NOT part of Emacs.
+
+;; Author: Joshua Cearley <joshua.cearley@gmail.com>
+;; Version: 0.0.2
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;;; Code:
+
 
 ;;; Special parts which require text highlights
 
@@ -46,13 +72,13 @@ what while word? words-of xor xor~ zero?")
 
 ;;; Syntax table.
 (defvar red-syntax-table
-  (let ((synTable (make-syntax-table)))
+  (let ((syn-table (make-syntax-table)))
     ;; Lisp style comments
-    (modify-syntax-entry ?\; "<" synTable)
-    (modify-syntax-entry ?\n ">" synTable)
+    (modify-syntax-entry ?\; "<" syn-table)
+    (modify-syntax-entry ?\n ">" syn-table)
     ;; Dashes are part of identifiers, and thus words
-    (modify-syntax-entry ?- "w" synTable)
-    synTable
+    (modify-syntax-entry ?- "w" syn-table)
+    syn-table
     )
   "Syntax table for the Red language.")
 
@@ -117,8 +143,8 @@ what while word? words-of xor xor~ zero?")
   (red-indent-line))
 
 ;;; Mode definition.
-(define-derived-mode red-mode fundamental-mode
-  "Red "
+(define-derived-mode red-mode prog-mode
+  "Red"
   "Major mode for editing source code in the Red or Red/System programming languages."
   :syntax-table red-syntax-table
 
