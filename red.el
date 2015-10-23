@@ -76,6 +76,8 @@ what while word? words-of xor xor~ zero?")
     ;; Lisp style comments
     (modify-syntax-entry ?\; "<" syn-table)
     (modify-syntax-entry ?\n ">" syn-table)
+    (modify-syntax-entry ?\\ "." syn-table)
+    (modify-syntax-entry ?^ "\\" syn-table)
     ;; Dashes are part of identifiers, and thus words
     (modify-syntax-entry ?- "w" syn-table)
     syn-table
