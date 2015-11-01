@@ -1,3 +1,11 @@
+2015-11-01    <Skrylar@SKRYLAR-PC>
+
+	* red.el (red-font-lock-keywords): Add font locks for integers,
+	hexadecimal and floating point values.
+	(red-integer-regex): Definition of integers.
+	(red-hexadecimal-regex): Definition of hexadecimal integers.
+	(red-float-regex): Definition of floating point numbers.
+
 2015-10-11    <Skrylar@SKRYLAR-PC>
 
 	* red.el (red-mode): Change from fundamental-mode to prog-mode.

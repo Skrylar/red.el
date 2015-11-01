@@ -24,6 +24,18 @@
 
 ;;; Code:
 
+(defconst red-integer-regex
+  "\\<\\(-?[1-9][0-9]*\\|0\\)\\>"
+  "Definition of Red integers.")
+
+(defconst red-hexadecimal-regex
+  "\\<\\([0-9A-F]+h\\)\\>"
+  "Definition of Red hexadecimal integers.")
+
+(defconst red-float-regex
+  "\\<\\([-+]?\\(0\\|[1-9][0-9]*\\)\\(E[-+]?[1-9][0-9]*\\|\\.[0-9]+\\(E[-+]?[1-9][0-9]*\\)?\\)\\)\\>"
+  "Definition of Red floating point numbers.")
+
 
 ;;; Special parts which require text highlights
 
@@ -67,7 +79,10 @@ what while word? words-of xor xor~ zero?")
   "Words which are defined by default in the Red programming language.")
 
 (defconst red-font-lock-keywords
-  `((,red-words-regex . font-lock-function-name-face))
+  `((,red-float-regex . font-lock-constant-face)
+    (,red-hexadecimal-regex . font-lock-constant-face)
+    (,red-integer-regex . font-lock-constant-face)
+    (,red-words-regex . font-lock-function-name-face))
   "Font lock table for the Red programming language")
 
 ;;; Syntax table.
