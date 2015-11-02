@@ -1,3 +1,10 @@
+2015-11-02    <Skrylar@SKRYLAR-PC>
+
+	* red.el (red-percent-regex): Regex to find percentages.
+	(red-tuple-regex): Regex to find tuples.
+	(red-pair-regex): Regex to find pairs.
+	(red-font-lock-keywords): Add additional types to font lock.
+
 2015-11-01    <Skrylar@SKRYLAR-PC>
 
 	* red.el (red-font-lock-keywords): Add font locks for integers,

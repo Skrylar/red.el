@@ -5,7 +5,7 @@
 ;; This file is NOT part of Emacs.
 
 ;; Author: Joshua Cearley <joshua.cearley@gmail.com>
-;; Version: 0.0.2
+;; Version: 0.0.4
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -36,6 +36,21 @@
   "\\<\\([-+]?\\(0\\|[1-9][0-9]*\\)\\(E[-+]?[1-9][0-9]*\\|\\.[0-9]+\\(E[-+]?[1-9][0-9]*\\)?\\)\\)\\>"
   "Definition of Red floating point numbers.")
 
+;;; pairs are two integers
+;;; http://www.red-lang.org/2015/06/054-new-datatypes-exceptions-and-set.html
+(defconst red-pair-regex
+  "\\<\\(-?[1-9][0-9]*\\|0\\)x\\(-?[1-9][0-9]*\\|0\\)\\>"
+  "Definition of Red pairs.")
+
+; percentages are simple floats with a % sigil
+(defconst red-percent-regex
+  "\\<-?[1-9][0-9]*\\(?:\\.[0-9]+\\)?%\\>"
+  "Definition of Red percentage numbers.")
+
+; tuples are 3-12 integers separated by periods
+(defconst red-tuple-regex
+  "\\(?:0\\|[1-9][0-9]*\\)\\(?:\\.\\(?:0\\|[1-9][0-9]*\\)\\)\\{2,12\\}"
+  "Definition of Red tuples.")
 
 ;;; Special parts which require text highlights
 
@@ -79,7 +94,9 @@ what while word? words-of xor xor~ zero?")
   "Words which are defined by default in the Red programming language.")
 
 (defconst red-font-lock-keywords
-  `((,red-float-regex . font-lock-constant-face)
+  `((,red-tuple-regex . font-lock-constant-face)
+    (,red-percent-regex . font-lock-constant-face)
+    (,red-float-regex . font-lock-constant-face)
     (,red-hexadecimal-regex . font-lock-constant-face)
     (,red-integer-regex . font-lock-constant-face)
     (,red-words-regex . font-lock-function-name-face))
