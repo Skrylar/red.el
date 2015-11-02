@@ -49,7 +49,7 @@
 
 ; tuples are 3-12 integers separated by periods
 (defconst red-tuple-regex
-  "\\(?:0\\|[1-9][0-9]*\\)\\(?:\\.\\(?:0\\|[1-9][0-9]*\\)\\)\\{2,12\\}"
+  "\\<\\(?:0\\|[1-9][0-9]*\\)\\(?:\\.\\(?:0\\|[1-9][0-9]*\\)\\)\\{2,12\\}\\>"
   "Definition of Red tuples.")
 
 ;;; Special parts which require text highlights
