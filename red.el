@@ -52,10 +52,15 @@
   "\\<\\(?:0\\|[1-9][0-9]*\\)\\(?:\\.\\(?:0\\|[1-9][0-9]*\\)\\)\\{2,12\\}\\>"
   "Definition of Red tuples.")
 
-;;; Special parts which require text highlights
+;; setters are words ending with :
+(defconst red-setter-regex
+  "\\_<\\(\\s_\\|\\w\\)+: "
+  "Definition of Red setters.")
 
-; symbols
-; "% * ** + - / // < << <= <> = == =? > >= >> >>> ? ?? NaN? a-an"
+;;; Special parts which require text highlights
+
+;; symbols
+;; "% * ** + - / // < << <= <> = == =? > >= >> >>> ? ?? NaN? a-an"
 
 (defconst red-words-regex
   (concat "\\<"
@@ -99,7 +104,8 @@ what while word? words-of xor xor~ zero?")
     (,red-float-regex . font-lock-constant-face)
     (,red-hexadecimal-regex . font-lock-constant-face)
     (,red-integer-regex . font-lock-constant-face)
-    (,red-words-regex . font-lock-function-name-face))
+    (,red-words-regex . font-lock-function-name-face)
+    (,red-setter-regex . font-lock-variable-name-face))
   "Font lock table for the Red programming language")
 
 ;;; Syntax table.
