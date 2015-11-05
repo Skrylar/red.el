@@ -202,3 +202,6 @@ what while word? words-of xor xor~ zero?")
   ;; map our indenter
   (make-local-variable indent-line-function)
   (setq indent-line-function 'red-indent-line))
+
+(add-to-list 'auto-mode-alist '("\\.reds?\\'" . red-mode))
+(provide 'red)
