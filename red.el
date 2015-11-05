@@ -1,6 +1,6 @@
 ;;; red.el --- Support for the Red programming language.
 
-;; Copyright (C) 2015 Joshua Cearley
+;; Copyright (C) 2015 Joshua Cearley and contributors.
 
 ;; This file is NOT part of Emacs.
 
@@ -42,12 +42,12 @@
   "\\<\\(-?[1-9][0-9]*\\|0\\)x\\(-?[1-9][0-9]*\\|0\\)\\>"
   "Definition of Red pairs.")
 
-; percentages are simple floats with a % sigil
+;; percentages are simple floats with a % sigil
 (defconst red-percent-regex
   "\\<-?[1-9][0-9]*\\(?:\\.[0-9]+\\)?%\\>"
   "Definition of Red percentage numbers.")
 
-; tuples are 3-12 integers separated by periods
+;; tuples are 3-12 integers separated by periods
 (defconst red-tuple-regex
   "\\<\\(?:0\\|[1-9][0-9]*\\)\\(?:\\.\\(?:0\\|[1-9][0-9]*\\)\\)\\{2,12\\}\\>"
   "Definition of Red tuples.")
@@ -203,5 +203,11 @@ what while word? words-of xor xor~ zero?")
   (make-local-variable indent-line-function)
   (setq indent-line-function 'red-indent-line))
 
+;;; Postamble
+
+;; Automatically activated `red-mode' when a Red or Red/System buffer
+;; is opened.
 (add-to-list 'auto-mode-alist '("\\.reds?\\'" . red-mode))
+
+;; Allow auto-loading this plugin.
 (provide 'red)
