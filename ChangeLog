@@ -1,3 +1,10 @@
+2015-12-08    <Skrylar@SKRYLAR-PC>
+
+	* red.el (red-mode): Disable electric indentation by default.
+	(red-get-indentation-for-line): Don't dedent a closer if there is
+	other text on the same line; will want to adjust this to account
+	for closers at the beginning of a line, though.
+
 2015-11-02    <Skrylar@SKRYLAR-PC>
 
 	* red.el (red-percent-regex): Regex to find percentages.

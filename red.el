@@ -141,17 +141,20 @@ what while word? words-of xor xor~ zero?")
 	0
       (let ((indentation 0)
 	    (closers "[\])}]")
-	    (openers "[\[({]"))
-	;; dedent if closers are present
+	    (openers "[\[({]")
+	    (potatos "[^])}\t ]"))
+	;; dedent if closers are present, but only if the line
+	;; contains nothing except for closers
 	(let* ((bol (progn (beginning-of-line)
 			   (point)))
 	       (eol (progn (end-of-line)
 			   (point)))
 	       (open (how-many openers bol eol))
 	       (close (how-many closers bol eol))
+	       (vegetables (how-many potatos bol eol))
 	       (diff (- open close)))
-	  (if (< diff 0)
-	      (setq indentation (- 0 red-indentation-amount))))
+	  (if (and (= 0 vegetables) (< diff 0))
+	      (setq indentation (* diff red-indentation-amount))))
 	;; add previous line's indentation
 	(previous-line)
 	(setq indentation (+ indentation (current-indentation)))
@@ -164,7 +167,7 @@ what while word? words-of xor xor~ zero?")
 	       (close (how-many closers bol eol))
 	       (diff (- open close)))
 	  (if (> diff 0)
-	      (setq indentation (+ indentation red-indentation-amount))))
+	      (setq indentation (+ indentation (* diff red-indentation-amount)))))
 	(max 0 indentation)))))
 
 (defun red-indent-line ()
@@ -195,9 +198,9 @@ what while word? words-of xor xor~ zero?")
   (define-key red-mode-map [remap comment-dwim] 'red-comment-dwim)
 
   ;; map electric indentation
-  (define-key red-mode-map "]" 'red-electric-insert-and-indent)
-  (define-key red-mode-map ")" 'red-electric-insert-and-indent)
-  (define-key red-mode-map "}" 'red-electric-insert-and-indent)
+  ;(define-key red-mode-map "]" 'red-electric-insert-and-indent)
+  ;(define-key red-mode-map ")" 'red-electric-insert-and-indent)
+  ;(define-key red-mode-map "}" 'red-electric-insert-and-indent)
 
   ;; map our indenter
   (make-local-variable indent-line-function)
