@@ -206,6 +206,32 @@ what while word? words-of xor xor~ zero?")
   (make-local-variable indent-line-function)
   (setq indent-line-function 'red-indent-line))
 
+;;; Auto-insert
+
+(define-auto-insert
+  '("\\.red\\'" . "Red script")
+  '(lambda ()
+     (skeleton-insert
+      '(""
+	"Red [" \n
+	> "Title: \"Untitled\"" \n
+	> "Author: \"" user-full-name "\"" \n
+	> "Version: 0.0.1" \n
+	"]" > \n
+     nil))))
+
+(define-auto-insert
+  '("\\.reds\\'" . "Red/System module")
+  '(lambda ()
+     (skeleton-insert
+      '(""
+	"Red/System [" \n
+	> "Title: \"Untitled\"" \n
+	> "Author: \"" user-full-name "\"" \n
+	> "Version: 0.0.1" \n
+	"]" > \n
+     nil))))
+
 ;;; Postamble
 
 ;; Automatically activated `red-mode' when a Red or Red/System buffer
